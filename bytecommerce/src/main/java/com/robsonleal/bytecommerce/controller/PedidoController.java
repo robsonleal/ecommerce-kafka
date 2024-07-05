@@ -5,6 +5,7 @@ import com.robsonleal.bytecommerce.dto.PedidoDTO;
 import com.robsonleal.bytecommerce.service.PedidoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,9 +20,9 @@ public class PedidoController {
 
     private final PedidoService pedidoService;
 
-    @PostMapping("/fazer-pedido")
-    public ResponseEntity<PedidoDTO> fazerPedido(@RequestBody List<ItemPedidoDTO> itensPedidosRequest) {
-        return ResponseEntity.ok(pedidoService.criarPedido(itensPedidosRequest));
+    @PostMapping("/clientes/{clienteId}/fazer-pedido")
+    public ResponseEntity<PedidoDTO> fazerPedido(@PathVariable Long clienteId, @RequestBody List<ItemPedidoDTO> itensPedidosRequest) {
+        return ResponseEntity.ok(pedidoService.criarPedido(clienteId, itensPedidosRequest));
     }
 
 }

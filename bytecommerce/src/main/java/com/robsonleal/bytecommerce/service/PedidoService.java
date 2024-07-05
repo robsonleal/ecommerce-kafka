@@ -4,9 +4,12 @@ import com.robsonleal.bytecommerce.dto.ItemPedidoDTO;
 import com.robsonleal.bytecommerce.dto.PedidoDTO;
 import com.robsonleal.bytecommerce.exception.BussinessException;
 import com.robsonleal.bytecommerce.exception.ResourceNotFoundException;
+import com.robsonleal.bytecommerce.integration.PedidoProducer;
+import com.robsonleal.bytecommerce.model.Cliente;
 import com.robsonleal.bytecommerce.model.Estoque;
 import com.robsonleal.bytecommerce.model.ItemPedido;
 import com.robsonleal.bytecommerce.model.Pedido;
+import com.robsonleal.bytecommerce.repository.ClienteRepository;
 import com.robsonleal.bytecommerce.repository.EstoqueRepository;
 import com.robsonleal.bytecommerce.repository.PedidoRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,10 +26,17 @@ import java.util.List;
 public class PedidoService {
     private final PedidoRepository pedidoRepository;
     private final EstoqueRepository estoqueRepository;
+    private final ClienteRepository clienteRepository;
     private final ModelMapper modelMapper;
+    private final PedidoProducer pedidoProducer;
 
-    public PedidoDTO criarPedido(List<ItemPedidoDTO> itensPedidosRequest) {
+    public PedidoDTO criarPedido(Long clienteId, List<ItemPedidoDTO> itensPedidosRequest) {
+
+        Cliente cliente = clienteRepository.findById(clienteId).orElseThrow(() ->
+            new ResourceNotFoundException(String.format("Cliente id: %d não encontrado!", clienteId)));
+
         Pedido pedido = new Pedido();
+        pedido.setCliente(cliente);
         pedido.setDataPedido(LocalDate.now());
 
         for (ItemPedidoDTO item : itensPedidosRequest) {
@@ -60,9 +70,12 @@ public class PedidoService {
         PedidoDTO pedidoDTO = new PedidoDTO();
         pedidoDTO.setId(pedido.getId());
         pedidoDTO.setDataPedido(pedido.getDataPedido());
+        pedidoDTO.setClienteId(pedido.getCliente().getId());
         pedidoDTO.setValorTotalPedido(pedido.getValorTotalPedido());
         pedidoDTO.setItensPedido(pedido.getItensPedido().stream().map(item ->
                 modelMapper.map(item, ItemPedidoDTO.class)).toList());
+
+        pedidoProducer.sendMessage(pedidoDTO);
 
         return pedidoDTO;
     }

@@ -20,5 +20,6 @@ public class PedidoDTO {
     private LocalDate dataPedido;
     private List<ItemPedidoDTO> itensPedido = new ArrayList<>();
     private BigDecimal valorTotalPedido;
+    private Long clienteId;
 
 }
