@@ -1,6 +1,5 @@
-package com.robsonleal.bytecommerce.dto;
+package com.robsonleal.bytebank.dto;
 
-import com.robsonleal.bytecommerce.model.StatusPedido;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,10 +18,10 @@ public class PedidoDTO {
 
     private Long id;
     private LocalDate dataPedido;
+    private StatusPedido status;
     private List<ItemPedidoDTO> itensPedido = new ArrayList<>();
     private BigDecimal valorTotalPedido;
     private Long clienteId;
     private String clienteCpf;
-    private StatusPedido status;
 
 }

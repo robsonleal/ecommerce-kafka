@@ -1,4 +1,4 @@
-package com.robsonleal.bytecommerce.config;
+package com.robsonleal.bytebank.config;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
