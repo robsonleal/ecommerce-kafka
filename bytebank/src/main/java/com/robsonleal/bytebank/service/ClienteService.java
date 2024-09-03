@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -50,4 +51,12 @@ public class ClienteService {
         return inicioCpf + hojeString + "-" + digito;
     }
 
+    public List<ClienteRequest> buscarTodos() {
+        return clienteRepository.findAll().stream()
+                .map(cliente -> modelMapper.map(cliente, ClienteRequest.class)).toList();
+    }
+
+    public ClienteRequest getById(Long id) {
+        return modelMapper.map(clienteRepository.findById(id), ClienteRequest.class);
+    }
 }

@@ -1,0 +1,60 @@
+{
+  "clientes": [
+    {
+      "id": "1",
+      "nome": "Robson",
+      "sobrenome": "Leal",
+      "dataNascimento": "1995-12-11",
+      "cpf": "034.488.080-08",
+      "endereco": {
+        "rua": "Cel. João Leitão",
+        "numero": "1000",
+        "bairro": "Barcelos",
+        "cep": "96506-800"
+      },
+      "email": "robson_leal@outlook.com.br"
+    },
+    {
+      "id": "2",
+      "nome": "Zezinho",
+      "sobrenome": "Dambros",
+      "dataNascimento": "2005-02-17",
+      "cpf": "999.455.000-01",
+      "endereco": {
+        "rua": "Rua. Palmeira Verde",
+        "numero": "555",
+        "bairro": "Carvalho",
+        "cep": "96000-100"
+      },
+      "email": "zezinho_dambros@outlook.com.br"
+    },
+    {
+      "id": "3",
+      "nome": "Luan Carlos",
+      "sobrenome": "Tavares",
+      "dataNascimento": "2003-05-01",
+      "cpf": "024.888.900-80",
+      "endereco": {
+        "rua": "Aparicio Neves",
+        "numero": "999",
+        "bairro": "Tupinambá",
+        "cep": "10000-555"
+      },
+      "email": "luan_carlos@outlook.com.br"
+    },
+    {
+      "id": "768e",
+      "nome": "Robson",
+      "sobrenome": "Leal",
+      "dataNascimento": "1995-12-11",
+      "cpf": "034.488.080-08",
+      "endereco": {
+        "rua": "Cel. João Leitão",
+        "numero": "1000",
+        "bairro": "Barcelos",
+        "cep": "96506-800"
+      },
+      "email": "robson_leal@outlook.com.br"
+    }
+  ]
+}

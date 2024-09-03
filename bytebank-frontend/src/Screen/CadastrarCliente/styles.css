@@ -1,0 +1,17 @@
+.customContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  width: 30%;
+  margin: 50px auto;
+}
+
+.containerForm {
+  width: 100%;
+}
+
+.containerFormEndereco {
+  display: flex;
+  gap: 20px;
+}

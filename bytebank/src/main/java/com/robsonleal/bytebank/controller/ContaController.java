@@ -4,6 +4,7 @@ import com.robsonleal.bytebank.dto.OperacaoRespose;
 import com.robsonleal.bytebank.service.ContaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.math.BigDecimal;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/clientes/{clienteId}")
 @RequiredArgsConstructor
 public class ContaController {
